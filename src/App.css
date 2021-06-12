@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&family=Walter+Turncoat&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 2em;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* Hangman Container*/
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hidden Word */
+.word--wrapper {
+  display: flex;
+  margin: 0 0 1em 0;
+  font-family: "Walter Turncoat", cursive;
+}
+
+.word--wrapper__item {
+  font-size: 2em;
+  font-weight: 600;
+  margin: 0 0.25em 0 0;
+}
+
+/* .notification--wrapper {
+  display: flex;
+}
+
+.notification--wrapper--button {
+  justify-content: center;
+} */
+
+/* Alphabet List*/
+.alphabet--wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
+  margin: 0 auto 2em auto;
+}
+.alphabet--wrapper__item {
+  width: calc(100% / 10 - 0.25em);
+  text-transform: uppercase;
+  font-size: 2em;
+  background: white;
+  color: black;
+  border: solid 1px #ccc;
+  border-radius: 0.25em;
+  padding: 0.5em 0;
+  margin: 0 0.25em 0.25em 0;
+  text-align: center;
+  cursor: pointer;
+  transition: ease 200ms;
+}
