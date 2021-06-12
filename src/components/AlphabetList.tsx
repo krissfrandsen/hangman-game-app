@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import React, { useContext } from "react";
 import { HangmanContext } from "../context/HangmanContext";
 
 const AlphabetList = ({ guess }: any) => {

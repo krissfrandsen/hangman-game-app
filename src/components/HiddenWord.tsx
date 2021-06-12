@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { HangmanContext } from "../context/HangmanContext";
 
-const Word = () => {
+const HiddenWord = () => {
   const { guessStatus } = useContext(HangmanContext);
   return (
     <div className="word--wrapper">
@@ -14,4 +14,4 @@ const Word = () => {
   );
 };
 
-export default Word;
+export default HiddenWord;

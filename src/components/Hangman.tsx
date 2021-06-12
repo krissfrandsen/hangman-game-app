@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { HangmanContext } from "../context/HangmanContext";
 import { wordList } from "../wordList";
-
+import HiddenWord from "./HiddenWord";
+import Notification from "./Notification";
+import AlphabetList from "./AlphabetList";
 const Hangman: React.FC = () => {
   const {
     count,
@@ -12,11 +14,8 @@ const Hangman: React.FC = () => {
     setGuessStatus,
     usedWords,
     setUsedWords,
-    isEndGame,
     setIsEndGame,
   } = useContext(HangmanContext);
-
-  const alphabetList: string[] = "abcdefghijklmnopqrstuvwxyzöäå".split("");
 
   const isLetterCorrect = (letter: string) => word.indexOf(letter) >= 0;
 
@@ -98,37 +97,9 @@ const Hangman: React.FC = () => {
 
   return (
     <div className="container">
-      <div>
-        {guessStatus.split("").map((letter: string, idx: number) => (
-          <p key={`guess-${letter}-${idx}`}>{letter}</p>
-        ))}
-      </div>
-      {isEndGame && guessStatus.indexOf("_") < 0 ? (
-        <p>Congratulations! You win!</p>
-      ) : (
-        ""
-      )}
-      {isEndGame && guessStatus.indexOf("_") >= 0 && count >= 10 ? (
-        <div>
-          <p>
-            You lose! Correct word is: <span>{word}</span>
-          </p>
-          <button onClick={() => restartGame()}>Try again?</button>
-        </div>
-      ) : (
-        ""
-      )}
-      <div>
-        {alphabetList.map((alphabet) => (
-          <button
-            key={alphabet}
-            onClick={() => guess(alphabet)}
-            disabled={usedWords.indexOf(alphabet) >= 0 || isEndGame}
-          >
-            {alphabet}
-          </button>
-        ))}
-      </div>
+      <HiddenWord />
+      <Notification restartGame={restartGame} />
+      <AlphabetList guess={guess} />
       <p>
         <span>{count > 1 ? "Wrong guesses" : "Wrong guess"}</span>: {count}
       </p>

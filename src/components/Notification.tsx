@@ -1,48 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { HangmanContext } from "../context/HangmanContext";
-import { wordList } from "../wordList";
 
-const Notification = () => {
-  const {
-    count,
-    setCount,
-    word,
-    setWord,
-    guessStatus,
-    setGuessStatus,
-    setUsedWords,
-    isEndGame,
-    setIsEndGame,
-  } = useContext(HangmanContext);
+type GameType = {
+  restartGame: () => void;
+};
 
-  const initWord = () => {
-    let randomIndex: number = Math.floor(Math.random() * wordList.length);
-    let newWord = "";
-
-    try {
-      newWord = wordList[randomIndex];
-    } catch (e) {
-      console.log(e);
-      randomIndex = Math.floor(Math.random() * wordList.length);
-      newWord = wordList[randomIndex];
-    }
-
-    const hiddenWord = newWord
-      .split("")
-      .map(() => "_")
-      .join("");
-    setWord(newWord.toUpperCase());
-    setGuessStatus(hiddenWord);
-  };
-
-  const restartGame = () => {
-    setCount(0);
-    setUsedWords([]);
-    initWord();
-    setIsEndGame(false);
-  };
-
-  useEffect(restartGame, []);
+const Notification = ({ restartGame }: GameType) => {
+  const { count, word, guessStatus, isEndGame } = useContext(HangmanContext);
 
   return (
     <div className="notification--wrapper">

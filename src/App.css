@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&family=Walter+Turncoat&display=swap");
 
+:root {
+  --main-bg-color: #f5e9e2;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +11,7 @@
 }
 
 body {
+  background-color: var(--main-bg-color);
   font-size: 2em;
   font-family: "Ubuntu", sans-serif;
 }
@@ -32,13 +37,10 @@ body {
   margin: 0 0.25em 0 0;
 }
 
-/* .notification--wrapper {
+.notification--wrapper {
   display: flex;
+  flex-direction: column;
 }
-
-.notification--wrapper--button {
-  justify-content: center;
-} */
 
 /* Alphabet List*/
 .alphabet--wrapper {
