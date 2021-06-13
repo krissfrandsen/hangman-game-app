@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { HangmanContext } from "../context/HangmanContext";
+import { wordList } from "../wordList";
 import Button from "./Button";
 
 type GameType = {
@@ -7,13 +8,14 @@ type GameType = {
 };
 
 const Notification: React.FC<GameType> = ({ restartGame }) => {
-  const { count, word, guessStatus, isEndGame } = useContext(HangmanContext);
+  const { count, randomNumber, guessStatus, isEndGame } =
+    useContext(HangmanContext);
 
   return (
     <div className="notification--wrapper">
       {isEndGame && guessStatus.indexOf("_") < 0 ? (
         <>
-          <h3>Congratulations!</h3>
+          <h2>Congratulations!</h2>
           <Button
             className="button btn--play btn__correct"
             onClick={() => restartGame()}
@@ -24,17 +26,26 @@ const Notification: React.FC<GameType> = ({ restartGame }) => {
         ""
       )}
       {isEndGame && guessStatus.indexOf("_") >= 0 && count >= 10 ? (
-        <div>
-          <h3>You lose!</h3>
+        <>
+          <h2>You lose!</h2>
           <p>
-            Correct word is: <span>{word}</span>
+            Correct word is:
+            <span className="notification--wrapper__item">
+              {wordList[randomNumber].word}
+            </span>
+          </p>
+          <p>
+            Meaning:
+            <span className="notification--wrapper__item">
+              {wordList[randomNumber].meaning}
+            </span>
           </p>
           <Button
             className="button btn--play btn__wrong"
             onClick={() => restartGame()}
             children="Try Again"
           />
-        </div>
+        </>
       ) : (
         ""
       )}

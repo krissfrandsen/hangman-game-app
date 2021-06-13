@@ -4,7 +4,8 @@ export const HangmanContext = createContext<any>(null);
 
 export const HangmanProvider: React.FC = ({ children }) => {
   const [count, setCount] = useState<number>(0);
-  const [word, setWord] = useState("hangman");
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [word, setWord] = useState({ id: "", word: "", meaning: "" });
   const [guessStatus, setGuessStatus] = useState<any>("_______");
   const [usedWords, setUsedWords] = useState<string[]>([]);
   const [isEndGame, setIsEndGame] = useState(false);
@@ -12,6 +13,8 @@ export const HangmanProvider: React.FC = ({ children }) => {
   const value = {
     count,
     setCount,
+    randomNumber,
+    setRandomNumber,
     word,
     setWord,
     guessStatus,

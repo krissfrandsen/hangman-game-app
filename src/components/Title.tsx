@@ -3,7 +3,8 @@ import React from "react";
 const Title = () => {
   return (
     <div className="title--wrapper">
-      <h3>Shall we play a game?</h3>
+      <h1>Hangman</h1>
+      <h3>Guess the swedish word.</h3>
     </div>
   );
 };

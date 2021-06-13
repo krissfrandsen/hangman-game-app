@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&family=Walter+Turncoat&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,300&family=Walter+Turncoat&display=swap");
 /* Colors */
 :root {
   --primary-color: #00d9c0;
@@ -18,6 +17,7 @@
 body {
   background-color: var(--white);
   font-size: 2em;
+  line-height: 2em;
   color: var(--black);
   font-family: "Ubuntu", sans-serif;
 }
@@ -35,23 +35,35 @@ body {
 
 .btn--play {
   height: 2.1em;
-  width: 70%;
+  width: 10em;
   margin: 1em;
   font-size: 0.8em;
 }
 
 .btn__correct:hover {
-  border: solid 1px rgba(255, 255, 255, 0.2);
   background: var(--primary-color);
   color: var(--white);
 }
 
 .btn__wrong:hover {
-  border: solid 1px rgba(255, 255, 255, 0.2);
   background: var(--secondary-color);
   color: var(--white);
 }
 
+.btn--keys {
+  height: 2.8em;
+  width: 6%;
+  margin: 0.1875em;
+  font-size: 0.8em;
+}
+
+.btn--keys:active {
+  background: var(--brown);
+}
+
+.btn--keys:disabled {
+  background: var(--brown);
+}
 /* Hangman Container*/
 .container {
   display: flex;
@@ -66,13 +78,47 @@ body {
   margin: 1em 0;
 }
 
+.title--wrapper h1 {
+  margin-bottom: 0.5em;
+}
+
+/* Hero */
+
+.hero {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+
 /* Figure */
 .figure--container {
-  margin-top: 1em;
   fill: transparent;
   stroke: var(--black);
   stroke-width: 4px;
   stroke-linecap: round;
+}
+
+/* Hidden Word */
+.word--wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.word--wrapper__item {
+  font-size: 0.8em;
+}
+
+.word--wrapper__hidden {
+  margin-top: auto;
+  display: flex;
+  font-family: "Walter Turncoat", cursive;
+}
+
+.word--wrapper__hidden__item {
+  font-size: 1.6em;
+  font-weight: 500;
+  margin: 0 0.25em 0 0;
 }
 
 /* Notification */
@@ -80,21 +126,13 @@ body {
   text-align: center;
 }
 
-.notification--wrapper h3 {
+.notification--wrapper h2 {
   margin-bottom: 0.5em;
 }
 
-/* Hidden Word */
-.word--wrapper {
-  display: flex;
-  margin: 0 0 1em 0;
-  font-family: "Walter Turncoat", cursive;
-}
-
-.word--wrapper__item {
-  font-size: 1.6em;
-  font-weight: 600;
-  margin: 0 0.25em 0 0;
+.notification--wrapper__item {
+  padding-left: 1em;
+  font-style: italic;
 }
 
 /* Keyboard */
@@ -104,14 +142,4 @@ body {
   flex-flow: row wrap;
   width: 80%;
   margin: 0 auto 2em auto;
-}
-.btn--keys {
-  height: 2.8em;
-  width: 6%;
-  margin: 0.1875em;
-  font-size: 1em;
-}
-
-.btn--keys:active {
-  background: var(--brown);
 }

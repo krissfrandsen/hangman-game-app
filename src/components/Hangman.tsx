@@ -10,7 +10,8 @@ const Hangman: React.FC = () => {
   const {
     count,
     setCount,
-    word,
+    randomNumber,
+    setRandomNumber,
     setWord,
     guessStatus,
     setGuessStatus,
@@ -20,13 +21,20 @@ const Hangman: React.FC = () => {
     setIsEndGame,
   } = useContext(HangmanContext);
 
-  const isLetterCorrect = (letter: string) => word.indexOf(letter) >= 0;
+  const generateRandomNumber = () => {
+    const random = Math.floor(Math.random() * wordList.length);
+    setRandomNumber(random);
+  };
+
+  let swedishWord = wordList[randomNumber].word;
+
+  const isLetterCorrect = (letter: string) => swedishWord.indexOf(letter) >= 0;
 
   const hiddenWord = (letter: string, arr: string[]) => {
     if (!letter) {
       throw new Error("Letter does not exist");
     }
-    let hidden = word;
+    let hidden = swedishWord;
 
     const guessedStatus = hidden
       .split("")
@@ -62,15 +70,13 @@ const Hangman: React.FC = () => {
   };
 
   const initWord = () => {
-    let randomIndex: number = Math.floor(Math.random() * wordList.length);
     let newWord = "";
-
     try {
-      newWord = wordList[randomIndex];
+      newWord = swedishWord;
     } catch (e) {
       console.log(e);
-      randomIndex = Math.floor(Math.random() * wordList.length);
-      newWord = wordList[randomIndex];
+      generateRandomNumber();
+      newWord = swedishWord;
     }
 
     const hiddenWord = newWord
@@ -85,6 +91,7 @@ const Hangman: React.FC = () => {
     setCount(0);
     setUsedWords([]);
     initWord();
+    generateRandomNumber();
     setIsEndGame(false);
   };
 
@@ -101,11 +108,10 @@ const Hangman: React.FC = () => {
   return (
     <div className="container">
       <Title />
-      <p>
-        <span>{count > 1 ? "Wrong guesses" : "Wrong guess"}</span>: {count}
-      </p>
-      <Figure />
-      <HiddenWord />
+      <div className="hero">
+        <Figure />
+        <HiddenWord />
+      </div>
       {isEndGame ? (
         <Notification restartGame={restartGame} />
       ) : (

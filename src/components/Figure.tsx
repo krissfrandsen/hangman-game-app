@@ -3,7 +3,6 @@ import { HangmanContext } from "../context/HangmanContext";
 
 const Figure = () => {
   const { count } = useContext(HangmanContext);
-  console.log(count);
 
   return (
     <svg height="250" width="200" className="figure--container">

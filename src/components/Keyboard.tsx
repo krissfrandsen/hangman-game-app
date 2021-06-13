@@ -8,7 +8,7 @@ type KeyboardType = {
 
 const Keyboard: React.FC<KeyboardType> = ({ guess }) => {
   const { usedWords, isEndGame } = useContext(HangmanContext);
-  const keys: string[] = "abcdefghijklmnopqrstuvwxyz".split("");
+  const keys: string[] = "abcdefghijklmnopqrstuvwxyzåäö".split("");
 
   return (
     <div className="keyboard--wrapper">
