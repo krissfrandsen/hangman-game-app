@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,300&family=Walter+Turncoat&display=swap");
 /* Colors */
 :root {
-  --primary-color: #00d9c0;
-  --secondary-color: #ff4365;
+  --primary-color: #ff4365;
   --white: #fffff3;
   --black: #030301;
   --brown: #b7ad99;
@@ -40,13 +39,8 @@ body {
   font-size: 0.8em;
 }
 
-.btn__correct:hover {
+.btn--play:hover {
   background: var(--primary-color);
-  color: var(--white);
-}
-
-.btn__wrong:hover {
-  background: var(--secondary-color);
   color: var(--white);
 }
 
@@ -130,6 +124,7 @@ body {
 /* Notification */
 .notification--wrapper {
   text-align: center;
+  width: 80%;
 }
 
 .notification--wrapper h2 {
