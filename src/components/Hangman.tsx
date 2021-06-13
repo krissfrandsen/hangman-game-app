@@ -5,6 +5,7 @@ import Title from "./Title";
 import HiddenWord from "./HiddenWord";
 import Notification from "./Notification";
 import Keyboard from "./Keyboard";
+import Figure from "./Figure";
 const Hangman: React.FC = () => {
   const {
     count,
@@ -99,6 +100,7 @@ const Hangman: React.FC = () => {
   return (
     <div className="container">
       <Title />
+      <Figure />
       <HiddenWord />
       <Notification restartGame={restartGame} />
       <Keyboard guess={guess} />

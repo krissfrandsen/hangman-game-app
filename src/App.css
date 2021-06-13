@@ -58,7 +58,6 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 
 /* Title */
@@ -69,6 +68,16 @@ body {
 
 .title--wrapper h1 {
   margin-bottom: 0.5em;
+}
+.figure-container {
+  fill: transparent;
+  stroke: var(--black);
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.figure-part {
+  display: none;
 }
 
 /* Notification */

@@ -1,6 +1,7 @@
 # Hangman Game App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+With Typescript, and UseContext as State Management.
 
 ## Available Scripts
 
