@@ -10,6 +10,7 @@ type GameType = {
 const Notification: React.FC<GameType> = ({ restartGame }) => {
   const { count, randomNumber, guessStatus, isEndGame } =
     useContext(HangmanContext);
+  console.log(guessStatus.indexOf("_") < 0);
 
   return (
     <div className="notification--wrapper">
@@ -31,7 +32,7 @@ const Notification: React.FC<GameType> = ({ restartGame }) => {
           <p>
             Correct word is:
             <span className="notification--wrapper__item">
-              {wordList[randomNumber].word}
+              {wordList[randomNumber].term}
             </span>
           </p>
           <p>

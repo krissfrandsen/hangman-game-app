@@ -2,16 +2,17 @@ import React, { useContext, useEffect } from "react";
 import { HangmanContext } from "../context/HangmanContext";
 import { wordList } from "../wordList";
 import Title from "./Title";
-import HiddenWord from "./HiddenWord";
 import Notification from "./Notification";
 import Keyboard from "./Keyboard";
-import Figure from "./Figure";
+import Hero from "./Hero";
+
 const Hangman: React.FC = () => {
   const {
+    generateRandomNumber,
     count,
     setCount,
     randomNumber,
-    setRandomNumber,
+    selectedWord,
     setWord,
     guessStatus,
     setGuessStatus,
@@ -21,20 +22,13 @@ const Hangman: React.FC = () => {
     setIsEndGame,
   } = useContext(HangmanContext);
 
-  const generateRandomNumber = () => {
-    const random = Math.floor(Math.random() * wordList.length);
-    setRandomNumber(random);
-  };
-
-  let swedishWord = wordList[randomNumber].word;
-
-  const isLetterCorrect = (letter: string) => swedishWord.indexOf(letter) >= 0;
+  const isLetterCorrect = (letter: string) => selectedWord.indexOf(letter) >= 0;
 
   const hiddenWord = (letter: string, arr: string[]) => {
     if (!letter) {
       throw new Error("Letter does not exist");
     }
-    let hidden = swedishWord;
+    let hidden = selectedWord;
 
     const guessedStatus = hidden
       .split("")
@@ -70,19 +64,22 @@ const Hangman: React.FC = () => {
   };
 
   const initWord = () => {
+    generateRandomNumber();
     let newWord = "";
+
     try {
-      newWord = swedishWord;
+      newWord = wordList[randomNumber].term;
     } catch (e) {
       console.log(e);
       generateRandomNumber();
-      newWord = swedishWord;
+      newWord = wordList[randomNumber].term;
     }
 
     const hiddenWord = newWord
       .split("")
       .map(() => "_")
       .join("");
+
     setWord(newWord.toLowerCase());
     setGuessStatus(hiddenWord);
   };
@@ -90,9 +87,8 @@ const Hangman: React.FC = () => {
   const restartGame = () => {
     setCount(0);
     setUsedWords([]);
-    initWord();
-    generateRandomNumber();
     setIsEndGame(false);
+    initWord();
   };
 
   const checkEndGame = () => {
@@ -108,10 +104,7 @@ const Hangman: React.FC = () => {
   return (
     <div className="container">
       <Title />
-      <div className="hero">
-        <Figure />
-        <HiddenWord />
-      </div>
+      <Hero />
       {isEndGame ? (
         <Notification restartGame={restartGame} />
       ) : (

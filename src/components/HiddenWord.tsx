@@ -2,21 +2,21 @@ import React, { useContext } from "react";
 import { HangmanContext } from "../context/HangmanContext";
 
 const HiddenWord = () => {
-  const { count, guessStatus } = useContext(HangmanContext);
+  const { count, selectedWord, usedWords } = useContext(HangmanContext);
   return (
     <div className="word--wrapper">
-      <div className="word--wrapper__item">
+      <div className="word--wrapper__guess">
         <p>
           <span>{count > 1 ? "Wrong guesses" : "Wrong guess"}</span>: {count}
         </p>
       </div>
       <div className="word--wrapper__hidden">
-        {guessStatus.split("").map((letter: string, idx: number) => (
+        {selectedWord.split("").map((letter: string, idx: number) => (
           <p
             className="word--wrapper__hidden__item"
             key={`guess-${letter}-${idx}`}
           >
-            {letter}
+            {usedWords.includes(letter) ? letter : ""}
           </p>
         ))}
       </div>
