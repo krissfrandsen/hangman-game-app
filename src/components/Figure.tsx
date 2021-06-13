@@ -6,7 +6,7 @@ const Figure = () => {
   console.log(count);
 
   return (
-    <svg height="250" width="200" className="figure-container">
+    <svg height="250" width="200" className="figure--container">
       {count > 0 && <line x1="20" y1="230" x2="100" y2="230" />}
       {count > 1 && <line x1="60" y1="20" x2="60" y2="230" />}
       {count > 2 && <line x1="60" y1="20" x2="140" y2="20" />}

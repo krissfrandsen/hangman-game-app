@@ -13,7 +13,7 @@ const Notification: React.FC<GameType> = ({ restartGame }) => {
     <div className="notification--wrapper">
       {isEndGame && guessStatus.indexOf("_") < 0 ? (
         <>
-          <p>Congratulations! You win!</p>
+          <h3>Congratulations!</h3>
           <Button
             className="button btn--play btn__correct"
             onClick={() => restartGame()}
@@ -25,8 +25,9 @@ const Notification: React.FC<GameType> = ({ restartGame }) => {
       )}
       {isEndGame && guessStatus.indexOf("_") >= 0 && count >= 10 ? (
         <div>
+          <h3>You lose!</h3>
           <p>
-            You lose! Correct word is: <span>{word}</span>
+            Correct word is: <span>{word}</span>
           </p>
           <Button
             className="button btn--play btn__wrong"

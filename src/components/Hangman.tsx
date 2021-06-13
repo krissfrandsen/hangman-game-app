@@ -16,6 +16,7 @@ const Hangman: React.FC = () => {
     setGuessStatus,
     usedWords,
     setUsedWords,
+    isEndGame,
     setIsEndGame,
   } = useContext(HangmanContext);
 
@@ -100,13 +101,16 @@ const Hangman: React.FC = () => {
   return (
     <div className="container">
       <Title />
-      <Figure />
-      <HiddenWord />
-      <Notification restartGame={restartGame} />
-      <Keyboard guess={guess} />
       <p>
         <span>{count > 1 ? "Wrong guesses" : "Wrong guess"}</span>: {count}
       </p>
+      <Figure />
+      <HiddenWord />
+      {isEndGame ? (
+        <Notification restartGame={restartGame} />
+      ) : (
+        <Keyboard guess={guess} />
+      )}
     </div>
   );
 };
