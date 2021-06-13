@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { HangmanContext } from "../context/HangmanContext";
 import { wordList } from "../wordList";
+import Title from "./Title";
 import HiddenWord from "./HiddenWord";
 import Notification from "./Notification";
-import AlphabetList from "./AlphabetList";
+import Keyboard from "./Keyboard";
 const Hangman: React.FC = () => {
   const {
     count,
@@ -97,9 +98,10 @@ const Hangman: React.FC = () => {
 
   return (
     <div className="container">
+      <Title />
       <HiddenWord />
       <Notification restartGame={restartGame} />
-      <AlphabetList guess={guess} />
+      <Keyboard guess={guess} />
       <p>
         <span>{count > 1 ? "Wrong guesses" : "Wrong guess"}</span>: {count}
       </p>

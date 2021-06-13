@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&family=Walter+Turncoat&display=swap");
 
+/* Colors */
 :root {
-  --main-bg-color: #f5e9e2;
+  --primary-color: #00d9c0;
+  --secondary-color: #ff4365;
+  --white: #fffff3;
+  --black: #030301;
+  --brown: #b7ad99;
 }
 
 * {
@@ -11,9 +16,40 @@
 }
 
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--white);
   font-size: 2em;
+  color: var(--black);
   font-family: "Ubuntu", sans-serif;
+}
+
+/* Button */
+.button {
+  border-radius: 0.25em;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  color: black;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn--play {
+  height: 2.1em;
+  width: 70%;
+  margin: 1em;
+  font-size: 0.8em;
+}
+
+.btn__correct:hover {
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.btn__wrong:hover {
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  background: var(--secondary-color);
+  color: var(--white);
 }
 
 /* Hangman Container*/
@@ -22,6 +58,22 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+}
+
+/* Title */
+.title--wrapper {
+  text-align: center;
+  margin: 1em 0;
+}
+
+.title--wrapper h1 {
+  margin-bottom: 0.5em;
+}
+
+/* Notification */
+.notification--wrapper {
+  text-align: center;
 }
 
 /* Hidden Word */
@@ -42,24 +94,22 @@ body {
   flex-direction: column;
 }
 
-/* Alphabet List*/
-.alphabet--wrapper {
+/* Keyboard */
+.keyboard--wrapper {
   display: flex;
+  justify-content: center;
   flex-flow: row wrap;
-  width: 90%;
+  width: 80%;
   margin: 0 auto 2em auto;
 }
-.alphabet--wrapper__item {
-  width: calc(100% / 10 - 0.25em);
-  text-transform: uppercase;
-  font-size: 2em;
-  background: white;
-  color: black;
-  border: solid 1px #ccc;
-  border-radius: 0.25em;
-  padding: 0.5em 0;
-  margin: 0 0.25em 0.25em 0;
-  text-align: center;
-  cursor: pointer;
-  transition: ease 200ms;
+.btn--keys {
+  height: 3em;
+  width: 7%;
+  max-width: 5.625em;
+  margin: 0.1875em;
+  font-size: 1em;
+}
+
+.btn--keys:active {
+  background: var(--brown);
 }
