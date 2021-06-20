@@ -20,19 +20,14 @@ const Notification: React.FC<GameType> = ({ restartGame }) => {
   } else if (isEndGame && guessStatus.indexOf("_") >= 0 && count >= 10) {
     finalMessage = "Unfortunately you lost. 😕";
     finalMessageRevealWord = `The right word was: ${wordList[randomNumber].term}`;
-    finalMessageWordMeaning = `${wordList[randomNumber].meaning}`;
+    finalMessageWordMeaning = `Meaning: ${wordList[randomNumber].meaning}`;
   }
 
   return (
     <div className="notification--wrapper">
       <h2>{finalMessage}</h2>
       <p>{finalMessageRevealWord}</p>
-      <p>
-        Meaning:
-        <span className="notification--wrapper__item">
-          {finalMessageWordMeaning}
-        </span>
-      </p>
+      <p className="notification--wrapper__item">{finalMessageWordMeaning}</p>
       <Button
         className="button btn--play"
         onClick={() => restartGame()}
